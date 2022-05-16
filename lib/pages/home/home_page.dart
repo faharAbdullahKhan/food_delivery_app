@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   List page = [
     MainFoodPage(),
+    MainFoodPage(),
     CartPage(),
 
   ];

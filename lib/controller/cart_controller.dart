@@ -12,6 +12,10 @@ class CartController extends GetxController {
 
   Map<int, CartModel> get items => _items;
 
+
+  //only for local storage and sharedpreferences
+  List<CartModel> storageItems = [];
+
 //TODO: Adding all values from product model to Cart controller
   void addItem(ProductModel product, int quantity) {
     var totalQuantity = 0;
@@ -65,6 +69,7 @@ class CartController extends GetxController {
        print("this is snakc");
      }
     }
+    cartRepo.addToCartList(getItems);
     update();
   }
 
@@ -104,6 +109,7 @@ class CartController extends GetxController {
 
   }
 
+  // TODO: Intializing list from map.
   List<CartModel> get getItems {
     return _items.entries.map((e) {
       return e.value;
@@ -119,5 +125,10 @@ class CartController extends GetxController {
     });
 
     return total;
+  }
+
+  List<CartModel> getCartData() {
+
+    return storageItems;
   }
 }
