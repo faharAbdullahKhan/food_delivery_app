@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Utilities/colors.dart';
+import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -13,17 +14,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   int _selectedIndex = 0;
 
   // late PersistentTabController _controller;
 
-
   List page = [
     MainFoodPage(),
     MainFoodPage(),
-    CartPage(),
-
+    CartHistory(),
   ];
 
   // List<Widget> _buildScreens() {
@@ -65,15 +63,10 @@ class _HomePageState extends State<HomePage> {
   //   ];
   // }
 
-
   void onTapNav(int index) {
     setState(() {
       _selectedIndex = index;
-
     });
-
-
-
   }
 
   @override
@@ -81,9 +74,8 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     // _controller = PersistentTabController(initialIndex: 0);
-
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,16 +90,30 @@ class _HomePageState extends State<HomePage> {
         onTap: onTapNav,
         currentIndex: _selectedIndex,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined, ),  label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.archive, ), label: "History "),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart,), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.person,),  label: "Me"),
-
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+              ),
+              label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.archive,
+              ),
+              label: "History "),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_cart,
+              ),
+              label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+              ),
+              label: "Me"),
         ],
       ),
     );
   }
-
 
   //TODO: Stylish Bottom navigation bar code
   // Widget build(BuildContext context) {
@@ -140,6 +146,5 @@ class _HomePageState extends State<HomePage> {
   //     navBarStyle: NavBarStyle.style1, // Choose the nav bar style with this property.
   //   );
   // }
-
 
 }

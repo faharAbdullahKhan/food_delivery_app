@@ -6,6 +6,7 @@ import 'package:food_delivery/Utilities/dimensions.dart';
 import 'package:food_delivery/controller/cart_controller.dart';
 import 'package:food_delivery/controller/popular_product_controller.dart';
 import 'package:food_delivery/controller/recommended_product_controller.dart';
+import 'package:food_delivery/pages/home/home_page.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
@@ -39,7 +40,7 @@ class CartPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => MainFoodPage());
+                    Get.to(() => HomePage());
                   },
                   child: AppIcon(
                     icon: Icons.home_outlined,
@@ -249,7 +250,7 @@ class CartPage extends StatelessWidget {
                       SizedBox(
                         width: Dimensions.width10 / 2,
                       ),
-                      BigText(text: "\$ ${cartController.totalAmount}"),
+                      BigText(text: "\$ ${cartController. totalAmount}"),
                       SizedBox(
                         width: Dimensions.width10 / 2,
                       ),
@@ -261,19 +262,27 @@ class CartPage extends StatelessWidget {
                   onTap: () {
                     // popularProduct.addItem(product);
                   },
-                  child: Container(
-                    padding: EdgeInsets.only(
-                        left: Dimensions.width20,
-                        right: Dimensions.width20,
-                        top: Dimensions.height20,
-                        bottom: Dimensions.height20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: AppColors.mainColor,
-                    ),
-                    child: BigText(
-                      text: "Check out",
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () {
+                      print("Tapped checkout button ");
+
+                      cartController.addToHistory();
+
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          left: Dimensions.width20,
+                          right: Dimensions.width20,
+                          top: Dimensions.height20,
+                          bottom: Dimensions.height20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimensions.radius20),
+                        color: AppColors.mainColor,
+                      ),
+                      child: BigText(
+                        text: "Check out",
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 )
