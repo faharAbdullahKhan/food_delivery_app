@@ -95,9 +95,14 @@ class CartPage extends StatelessWidget {
                                                 RecommendedProductController>()
                                             .recommendedProductList
                                             .indexOf(cartList[index].product!);
-                                        Get.toNamed(
-                                            RouteHelper.getRecommendedFood(
-                                                recommendedIndex, "cartpage"));
+                                        if(recommendedIndex<0) {
+                                          Get.snackbar("History Product", "Product revirew is not available for history product ", backgroundColor: AppColors.mainColor, colorText: Colors.white);
+
+                                        }else{
+                                          Get.toNamed(
+                                              RouteHelper.getRecommendedFood(
+                                                  recommendedIndex, "cartpage"));
+                                        }
                                       }
                                     },
                                     child: Container(

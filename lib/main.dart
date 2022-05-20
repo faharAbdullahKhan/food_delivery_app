@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
   dep.init();
   runApp(const MyApp());
 }
@@ -24,7 +24,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<CartController>().getCartData();
+
+    final CartController controller = Get.find<CartController>();
+
+    controller.getCartData();
+    controller.addToHistory();
     return GetBuilder<PopularProductController>(builder: (_) {
       return GetBuilder<RecommendedProductController>(builder: (_) {
         return GetMaterialApp(
