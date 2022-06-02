@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/auth/sign_in_page.dart';
+import 'package:food_delivery/auth/sign_up_page.dart';
 import 'package:food_delivery/controller/cart_controller.dart';
 import 'package:food_delivery/controller/popular_product_controller.dart';
 import 'package:food_delivery/controller/recommended_product_controller.dart';
@@ -31,9 +33,10 @@ class MyApp extends StatelessWidget {
     controller.addToHistory();
     return GetBuilder<PopularProductController>(builder: (_) {
       return GetBuilder<RecommendedProductController>(builder: (_) {
-        return GetMaterialApp(
+        return  GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
+          // home: SignInPage(),
           initialRoute: RouteHelper.getSplash(),
           getPages: RouteHelper.routes,
         );
